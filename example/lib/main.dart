@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       v2rayStatus.value = status;
     },
   );
-  final config = TextEditingController();
+  final config = TextEditingController(text: "vmess://eyJhZGQiOiAiMzguMTIuMjcuMTMyIiwgImFpZCI6ICIwIiwgImhvc3QiOiAiIiwgImlkIjogIjM5ZWRiZTFkLWUzZDktNGI0MC04YjY3LTI3Mjc5OGYzODUyZSIsICJuZXQiOiAia2NwIiwgInBhdGgiOiAiIiwgInBvcnQiOiA1OTQ3MywgInBzIjogIiIsICJzY3kiOiAibm9uZSIsICJ0bHMiOiAiIiwgInR5cGUiOiAibm9uZSIsICJ2IjogIjIifQ==");
   bool proxyOnly = false;
   final bypassSubnetController = TextEditingController();
   List<String> bypassSubnets = [];
