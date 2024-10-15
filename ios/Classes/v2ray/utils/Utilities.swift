@@ -1,21 +1,19 @@
-
 import Foundation
 import UIKit
 
 class Utilities {
-
     /// 复制文件
     static func copyFiles(from src: InputStream, to dst: URL) throws {
         let fileManager = FileManager.default
         let outputStream = OutputStream(url: dst, append: false)
-        
+
         src.open()
         outputStream?.open()
         defer {
             src.close()
             outputStream?.close()
         }
-        
+
         var buffer = [UInt8](repeating: 0, count: 1024)
         while src.hasBytesAvailable {
             let len = src.read(&buffer, maxLength: 1024)
@@ -29,7 +27,8 @@ class Utilities {
     static func getUserAssetsPath(_ context: UIViewController) -> String {
         let fileManager = FileManager.default
         if let extDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("assets"),
-           fileManager.fileExists(atPath: extDir.path) {
+           fileManager.fileExists(atPath: extDir.path)
+        {
             return extDir.path
         } else {
             let assetsDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("assets")
@@ -70,7 +69,7 @@ class Utilities {
 
         do {
             let configJson = try JSONSerialization.jsonObject(with: Data(config.utf8), options: []) as! [String: Any]
-            
+
             if let inbounds = configJson["inbounds"] as? [[String: Any]] {
                 for inbound in inbounds {
                     if let protocolType = inbound["protocol"] as? String, let port = inbound["port"] as? Int {
@@ -86,7 +85,8 @@ class Utilities {
             if let outbounds = configJson["outbounds"] as? [[String: Any]],
                let settings = outbounds[0]["settings"] as? [String: Any],
                let servers = settings["vnext"] as? [[String: Any]] ?? settings["servers"] as? [[String: Any]],
-               let server = servers.first {
+               let server = servers.first
+            {
                 v2rayConfig.CONNECTED_V2RAY_SERVER_ADDRESS = server["address"] as? String ?? ""
                 v2rayConfig.CONNECTED_V2RAY_SERVER_PORT = server["port"] as? String ?? ""
             }
@@ -106,15 +106,16 @@ class Utilities {
                     "statsOutboundUplink": true,
                     "statsOutboundDownlink": true
                 ]
-                
+
                 var updatedConfigJson = configJson
                 updatedConfigJson["policy"] = policy
                 updatedConfigJson["stats"] = [:]
-                
+
                 v2rayConfig.ENABLE_TRAFFIC_STATICS = true
-                
+
                 if let jsonData = try? JSONSerialization.data(withJSONObject: updatedConfigJson, options: []),
-                   let updatedConfig = String(data: jsonData, encoding: .utf8) {
+                   let updatedConfig = String(data: jsonData, encoding: .utf8)
+                {
                     v2rayConfig.V2RAY_FULL_JSON_CONFIG = updatedConfig
                 }
             }
