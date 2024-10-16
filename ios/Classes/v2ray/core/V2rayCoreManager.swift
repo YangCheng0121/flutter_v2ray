@@ -1,5 +1,5 @@
 import Foundation
-import Libv2ray
+//import Libv2ray
 
 
 // 单例 V2rayCoreManager 实现（与 Java 类似）
@@ -43,7 +43,7 @@ class V2rayCoreManager {
             totalUpload = 0 // 总上传流量重置
             
             print("setUpListener => new initialize from ", self)
-            print("当前的XrayCore版本:", Libv2ray.IOSLibXrayLiteCheckVersionX())
+//            print("当前的XrayCore版本:", Libv2ray.IOSLibXrayLiteCheckVersionX())
 
 
         } catch {
