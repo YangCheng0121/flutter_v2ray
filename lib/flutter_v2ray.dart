@@ -7,12 +7,15 @@ import 'package:flutter_v2ray/url/trojan.dart';
 import 'package:flutter_v2ray/url/url.dart';
 import 'package:flutter_v2ray/url/vless.dart';
 import 'package:flutter_v2ray/url/vmess.dart';
+import 'package:logger/logger.dart';
 
 import 'flutter_v2ray_platform_interface.dart';
 import 'model/v2ray_status.dart';
 
 export 'model/v2ray_status.dart';
 export 'url/url.dart';
+
+var logger = Logger();
 
 class FlutterV2ray {
   FlutterV2ray({required this.onStatusChanged});
@@ -29,14 +32,9 @@ class FlutterV2ray {
   }
 
   /// You must initialize V2Ray before using it.
-  Future<void> initializeV2Ray({
-    String notificationIconResourceType = "mipmap",
-    String notificationIconResourceName = "ic_launcher",
-  }) async {
+  Future<void> initializeV2Ray() async {
     await FlutterV2rayPlatform.instance.initializeV2Ray(
       onStatusChanged: onStatusChanged,
-      notificationIconResourceType: notificationIconResourceType,
-      notificationIconResourceName: notificationIconResourceName,
     );
   }
 
@@ -75,8 +73,6 @@ class FlutterV2ray {
     List<String>? blockedApps,
     List<String>? bypassSubnets,
     bool proxyOnly = false,
-    String notificationDisconnectButtonName = "DISCONNECT",
-
   }) async {
     try {
       if (jsonDecode(config) == null) {
@@ -92,7 +88,6 @@ class FlutterV2ray {
       blockedApps: blockedApps,
       proxyOnly: proxyOnly,
       bypassSubnets: bypassSubnets,
-      notificationDisconnectButtonName: notificationDisconnectButtonName,
     );
   }
 
@@ -112,8 +107,7 @@ class FlutterV2ray {
     } catch (_) {
       throw ArgumentError('The provided string is not valid JSON');
     }
-    return await FlutterV2rayPlatform.instance
-        .getServerDelay(config: config, url: url);
+    return await FlutterV2rayPlatform.instance.getServerDelay(config: config, url: url);
   }
 
   /// This method returns the connected server delay.

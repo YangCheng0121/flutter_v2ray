@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:logger/logger.dart';
 import 'model/v2ray_status.dart' show V2RayStatus;
 
 import 'flutter_v2ray_platform_interface.dart';
+
+var logger = Logger();
 
 /// An implementation of [FlutterV2rayPlatform] that uses method channels.
 class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
@@ -14,11 +17,10 @@ class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
   @override
   Future<void> initializeV2Ray({
     required void Function(V2RayStatus status) onStatusChanged,
-    required String notificationIconResourceType,
-    required String notificationIconResourceName,
   }) async {
     eventChannel.receiveBroadcastStream().distinct().cast().listen((event) {
       if (event != null) {
+        // print("event==========> ${event}");
         onStatusChanged.call(V2RayStatus(
           duration: event[0],
           uploadSpeed: int.parse(event[1]),
@@ -31,10 +33,6 @@ class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
     });
     await methodChannel.invokeMethod(
       'initializeV2Ray',
-      {
-        "notificationIconResourceType": notificationIconResourceType,
-        "notificationIconResourceName": notificationIconResourceName,
-      },
     );
   }
 
@@ -42,18 +40,37 @@ class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
   Future<void> startV2Ray({
     required String remark,
     required String config,
-    required String notificationDisconnectButtonName,
     List<String>? blockedApps,
     List<String>? bypassSubnets,
     bool proxyOnly = false,
   }) async {
+    Future<void> startV2Ray({
+      required String remark,
+      required String config,
+      List<String>? blockedApps,
+      List<String>? bypassSubnets,
+      bool proxyOnly = false,
+    }) async {
+      await methodChannel.invokeMethod('startV2Ray', {
+        "remark": remark,
+        "config": config,
+        "blocked_apps": blockedApps,
+        "bypass_subnets": bypassSubnets,
+        "proxy_only": proxyOnly,
+      });
+    }
+    // logger.d('Remark: $remark');
+    // logger.d('Config: $config');
+    // logger.d('Blocked Apps: $blockedApps');
+    // logger.d('Bypass Subnets: $bypassSubnets');
+    // logger.d('Proxy Only: $proxyOnly');
+
     await methodChannel.invokeMethod('startV2Ray', {
       "remark": remark,
       "config": config,
       "blocked_apps": blockedApps,
       "bypass_subnets": bypassSubnets,
       "proxy_only": proxyOnly,
-      "notificationDisconnectButtonName": notificationDisconnectButtonName,
     });
   }
 
@@ -63,8 +80,7 @@ class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
   }
 
   @override
-  Future<int> getServerDelay(
-      {required String config, required String url}) async {
+  Future<int> getServerDelay({required String config, required String url}) async {
     return await methodChannel.invokeMethod('getServerDelay', {
       "config": config,
       "url": url,
@@ -73,8 +89,7 @@ class MethodChannelFlutterV2ray extends FlutterV2rayPlatform {
 
   @override
   Future<int> getConnectedServerDelay(String url) async {
-    return await methodChannel
-        .invokeMethod('getConnectedServerDelay', {"url": url});
+    return await methodChannel.invokeMethod('getConnectedServerDelay', {"url", url});
   }
 
   @override

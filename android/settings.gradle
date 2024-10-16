@@ -1,1 +1,3 @@
+include ':flutter_v2ray'
+
 rootProject.name = 'flutter_v2ray'

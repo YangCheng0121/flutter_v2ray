@@ -1,48 +1,46 @@
-
 import Foundation
 
+/// AppConfigs 类用于管理应用程序的全局配置和状态。
 class AppConfigs {
-    /// 当前 V2Ray 连接模式，默认为 VPN_TUN
+
+    /// V2Ray 连接模式，默认设置为 VPN TUN 模式。
     static var V2RAY_CONNECTION_MODE: V2RAY_CONNECTION_MODES = .VPN_TUN
-    
-    /// 应用名称，默认为空
+
+    /// 应用程序名称，可选。
     static var APPLICATION_NAME: String?
-    
-    /// 应用图标的资源 ID
+
+    /// 应用程序图标的资源 ID，默认为 0。
     static var APPLICATION_ICON: Int = 0
-    
-    /// V2Ray 配置，默认为 nil
-    static var V2RAY_CONFIG: V2rayConfig?
-    
-    /// 当前 V2Ray 状态，默认为断开连接
+
+    /// 当前 V2Ray 配置对象，可选。
+    static var V2RAY_CONFIG: V2rayConfig? = nil
+
+    /// 当前 V2Ray 状态，默认为断开连接状态。
     static var V2RAY_STATE: V2RAY_STATES = .V2RAY_DISCONNECTED
-    
-    /// 是否启用流量和速度统计，默认为 true
-    static var ENABLE_TRAFFIC_AND_SPEED_STATICS: Bool = true
-    
-    /// 用于测量延迟的 URL
+
+    /// 是否启用流量和速度统计，默认为启用。
+    static var ENABLE_TRAFFIC_AND_SPEED_STATISTICS: Bool = true
+
+    /// 延迟测量 URL，可选。
     static var DELAY_URL: String?
-    
-    /// 通知中的断开连接按钮名称
-    static var NOTIFICATION_DISCONNECT_BUTTON_NAME: String?
 
-    /// V2Ray 服务命令枚举
+    /// V2Ray 服务命令的枚举，定义可以执行的操作。
     enum V2RAY_SERVICE_COMMANDS {
-        case START_SERVICE
-        case STOP_SERVICE
-        case MEASURE_DELAY
+        case START_SERVICE  // 启动服务
+        case STOP_SERVICE   // 停止服务
+        case MEASURE_DELAY  // 测量延迟
     }
 
-    /// V2Ray 状态枚举
+    /// V2Ray 状态的枚举，表示当前的连接状态。
     enum V2RAY_STATES {
-        case V2RAY_CONNECTED
-        case V2RAY_DISCONNECTED
-        case V2RAY_CONNECTING
+        case V2RAY_CONNECTED    // 已连接状态
+        case V2RAY_DISCONNECTED  // 断开连接状态
+        case V2RAY_CONNECTING    // 正在连接状态
     }
 
-    /// V2Ray 连接模式枚举
+    /// V2Ray 连接模式的枚举，定义不同的连接方式。
     enum V2RAY_CONNECTION_MODES {
-        case VPN_TUN
-        case PROXY_ONLY
+        case VPN_TUN       // 使用 VPN TUN 模式
+        case PROXY_ONLY    // 仅使用代理模式
     }
 }

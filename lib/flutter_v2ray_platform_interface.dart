@@ -30,8 +30,6 @@ abstract class FlutterV2rayPlatform extends PlatformInterface {
 
   Future<void> initializeV2Ray({
     required void Function(V2RayStatus status) onStatusChanged,
-    required String notificationIconResourceType,
-    required String notificationIconResourceName,
   }) {
     throw UnimplementedError('initializeV2Ray() has not been implemented.');
   }
@@ -39,7 +37,6 @@ abstract class FlutterV2rayPlatform extends PlatformInterface {
   Future<void> startV2Ray({
     required String remark,
     required String config,
-    required String notificationDisconnectButtonName,
     List<String>? blockedApps,
     List<String>? bypassSubnets,
     bool proxyOnly = false,
