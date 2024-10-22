@@ -10,8 +10,7 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		6EE08E272CC352AE00539EC3 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87492C842CBADD13004439F9 /* NetworkExtension.framework */; };
-		6EE08E2F2CC352AE00539EC3 /* Tunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6EE08E262CC352AE00539EC3 /* Tunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E5788E92CC7186C00B6299F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87492C842CBADD13004439F9 /* NetworkExtension.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -28,11 +27,11 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		6EE08E2D2CC352AE00539EC3 /* PBXContainerItemProxy */ = {
+		6E5788EF2CC7186C00B6299F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6EE08E252CC352AE00539EC3;
+			remoteGlobalIDString = 6E5788E72CC7186C00B6299F;
 			remoteInfo = Tunnel;
 		};
 /* End PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6EE08E2F2CC352AE00539EC3 /* Tunnel.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +60,8 @@
 		602727A853C2D3E179B43EA3 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		662FDE7198933BE9902CC61A /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6894D5A736DA241A5B1E8C76 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6EE08E262CC352AE00539EC3 /* Tunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Tunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E5788E82CC7186C00B6299F /* Tunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Tunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E7E6F982CC63B8C005997FF /* Tunnel copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tunnel copy-Info.plist"; path = "/Users/yangcheng/code/flutter_v2ray/expamle/ios/Tunnel copy-Info.plist"; sourceTree = "<absolute>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -80,17 +79,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6EE08E302CC352AE00539EC3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		6E5788F52CC7186C00B6299F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 6EE08E252CC352AE00539EC3 /* Tunnel */;
+			target = 6E5788E72CC7186C00B6299F /* Tunnel */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6EE08E282CC352AE00539EC3 /* Tunnel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6EE08E302CC352AE00539EC3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tunnel; sourceTree = "<group>"; };
+		6E5788EA2CC7186C00B6299F /* Tunnel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6E5788F52CC7186C00B6299F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tunnel; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +101,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EE08E232CC352AE00539EC3 /* Frameworks */ = {
+		6E5788E52CC7186C00B6299F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EE08E272CC352AE00539EC3 /* NetworkExtension.framework in Frameworks */,
+				6E5788E92CC7186C00B6299F /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,11 +154,12 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				6EE08E282CC352AE00539EC3 /* Tunnel */,
+				6E5788EA2CC7186C00B6299F /* Tunnel */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				A0093E6B9E29C1BA18D7B8C5 /* Pods */,
 				4C29CF79A52E3CAF2EB8F927 /* Frameworks */,
+				6E7E6F982CC63B8C005997FF /* Tunnel copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,7 +168,7 @@
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				331C8081294A63A400263BE5 /* RunnerTests.xctest */,
-				6EE08E262CC352AE00539EC3 /* Tunnel.appex */,
+				6E5788E82CC7186C00B6299F /* Tunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,26 +223,26 @@
 			productReference = 331C8081294A63A400263BE5 /* RunnerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6EE08E252CC352AE00539EC3 /* Tunnel */ = {
+		6E5788E72CC7186C00B6299F /* Tunnel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EE08E312CC352AE00539EC3 /* Build configuration list for PBXNativeTarget "Tunnel" */;
+			buildConfigurationList = 6E5788F62CC7186C00B6299F /* Build configuration list for PBXNativeTarget "Tunnel" */;
 			buildPhases = (
-				6EE08E222CC352AE00539EC3 /* Sources */,
-				6EE08E232CC352AE00539EC3 /* Frameworks */,
-				6EE08E242CC352AE00539EC3 /* Resources */,
+				6E5788E42CC7186C00B6299F /* Sources */,
+				6E5788E52CC7186C00B6299F /* Frameworks */,
+				6E5788E62CC7186C00B6299F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6EE08E282CC352AE00539EC3 /* Tunnel */,
+				6E5788EA2CC7186C00B6299F /* Tunnel */,
 			);
 			name = Tunnel;
 			packageProductDependencies = (
 			);
 			productName = Tunnel;
-			productReference = 6EE08E262CC352AE00539EC3 /* Tunnel.appex */;
+			productReference = 6E5788E82CC7186C00B6299F /* Tunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		97C146ED1CF9000F007C117D /* Runner */ = {
@@ -261,7 +261,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6EE08E2E2CC352AE00539EC3 /* PBXTargetDependency */,
+				6E5788F02CC7186C00B6299F /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -283,7 +283,7 @@
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 97C146ED1CF9000F007C117D;
 					};
-					6EE08E252CC352AE00539EC3 = {
+					6E5788E72CC7186C00B6299F = {
 						CreatedOnToolsVersion = 16.0;
 					};
 					97C146ED1CF9000F007C117D = {
@@ -307,7 +307,7 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
-				6EE08E252CC352AE00539EC3 /* Tunnel */,
+				6E5788E72CC7186C00B6299F /* Tunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -320,7 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EE08E242CC352AE00539EC3 /* Resources */ = {
+		6E5788E62CC7186C00B6299F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,7 +444,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EE08E222CC352AE00539EC3 /* Sources */ = {
+		6E5788E42CC7186C00B6299F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,10 +468,10 @@
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
 		};
-		6EE08E2E2CC352AE00539EC3 /* PBXTargetDependency */ = {
+		6E5788F02CC7186C00B6299F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6EE08E252CC352AE00539EC3 /* Tunnel */;
-			targetProxy = 6EE08E2D2CC352AE00539EC3 /* PBXContainerItemProxy */;
+			target = 6E5788E72CC7186C00B6299F /* Tunnel */;
+			targetProxy = 6E5788EF2CC7186C00B6299F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -556,14 +556,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.tunnel.Tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -588,9 +588,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
 			name = Debug;
@@ -606,7 +611,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
 			name = Release;
@@ -622,12 +632,17 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
 			name = Profile;
 		};
-		6EE08E322CC352AE00539EC3 /* Debug */ = {
+		6E5788F22CC7186C00B6299F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -636,11 +651,11 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Tunnel/Tunnel.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Tunnel/TunnelDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -657,9 +672,8 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.Tunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.tunnel.Tunnel.Tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -669,7 +683,7 @@
 			};
 			name = Debug;
 		};
-		6EE08E332CC352AE00539EC3 /* Release */ = {
+		6E5788F32CC7186C00B6299F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -682,7 +696,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -698,9 +712,8 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.Tunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.tunnel.Tunnel.Tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -708,7 +721,7 @@
 			};
 			name = Release;
 		};
-		6EE08E342CC352AE00539EC3 /* Profile */ = {
+		6E5788F42CC7186C00B6299F /* Profile */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -721,7 +734,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -737,9 +750,8 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle.Tunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.tunnel.Tunnel.Tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -867,14 +879,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -898,14 +910,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = YCZG54T744;
+				DEVELOPMENT_TEAM = TX6NMN9U23;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.expamle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sulian.tunnel.Tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -932,12 +944,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6EE08E312CC352AE00539EC3 /* Build configuration list for PBXNativeTarget "Tunnel" */ = {
+		6E5788F62CC7186C00B6299F /* Build configuration list for PBXNativeTarget "Tunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6EE08E322CC352AE00539EC3 /* Debug */,
-				6EE08E332CC352AE00539EC3 /* Release */,
-				6EE08E342CC352AE00539EC3 /* Profile */,
+				6E5788F22CC7186C00B6299F /* Debug */,
+				6E5788F32CC7186C00B6299F /* Release */,
+				6E5788F42CC7186C00B6299F /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
