@@ -17,6 +17,7 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "startV2Ray":
+         print("startV2Ray===========>")
             if let args = call.arguments as? [String: Any] {
                 // 确保所有参数都被正确解析
                 if let remark = args["remark"] as? String,
