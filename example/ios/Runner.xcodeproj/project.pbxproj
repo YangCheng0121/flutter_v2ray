@@ -11,8 +11,7 @@
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3EDCE9E3B070D9F8521ECC59 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36B260334A6C1D460268582 /* Pods_Runner.framework */; };
-		6EA4B01E2CE261BA002DEFA5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */; };
-		6EA4B0262CE261BA002DEFA5 /* PacketTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6EA4B01D2CE261BA002DEFA5 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6EA4B03F2CE39E05002DEFA5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */; };
 		72E6F3E66F970B2ED4A9B52A /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633CF1F00A9D2CE02511EAFD /* Pods_RunnerTests.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -28,36 +27,18 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		6EA4B0242CE261BA002DEFA5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6EA4B01C2CE261BA002DEFA5;
-			remoteInfo = PacketTunnel;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6EA4B0122CE24CC5002DEFA5 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				6EA4B0262CE261BA002DEFA5 /* PacketTunnel.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -71,7 +52,7 @@
 		633CF1F00A9D2CE02511EAFD /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6EA4B0182CE24CD4002DEFA5 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
-		6EA4B01D2CE261BA002DEFA5 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EA4B0302CE39DA5002DEFA5 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -91,17 +72,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6EA4B0272CE261BA002DEFA5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		6EA4B03D2CE39DA5002DEFA5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 6EA4B01C2CE261BA002DEFA5 /* PacketTunnel */;
+			target = 6EA4B02F2CE39DA5002DEFA5 /* PacketTunnel */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6EA4B01F2CE261BA002DEFA5 /* PacketTunnel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6EA4B0272CE261BA002DEFA5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PacketTunnel; sourceTree = "<group>"; };
+		6EA4B0322CE39DA5002DEFA5 /* PacketTunnel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6EA4B03D2CE39DA5002DEFA5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PacketTunnel; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +94,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EA4B01A2CE261BA002DEFA5 /* Frameworks */ = {
+		6EA4B02D2CE39DA5002DEFA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EA4B01E2CE261BA002DEFA5 /* NetworkExtension.framework in Frameworks */,
+				6EA4B03F2CE39E05002DEFA5 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +150,7 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				6EA4B01F2CE261BA002DEFA5 /* PacketTunnel */,
+				6EA4B0322CE39DA5002DEFA5 /* PacketTunnel */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				11456AF2F5F0D2619211FCFF /* Pods */,
@@ -182,7 +163,7 @@
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				331C8081294A63A400263BE5 /* RunnerTests.xctest */,
-				6EA4B01D2CE261BA002DEFA5 /* PacketTunnel.appex */,
+				6EA4B0302CE39DA5002DEFA5 /* PacketTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,26 +216,26 @@
 			productReference = 331C8081294A63A400263BE5 /* RunnerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6EA4B01C2CE261BA002DEFA5 /* PacketTunnel */ = {
+		6EA4B02F2CE39DA5002DEFA5 /* PacketTunnel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EA4B0282CE261BA002DEFA5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
+			buildConfigurationList = 6EA4B03E2CE39DA5002DEFA5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
 			buildPhases = (
-				6EA4B0192CE261BA002DEFA5 /* Sources */,
-				6EA4B01A2CE261BA002DEFA5 /* Frameworks */,
-				6EA4B01B2CE261BA002DEFA5 /* Resources */,
+				6EA4B02C2CE39DA5002DEFA5 /* Sources */,
+				6EA4B02D2CE39DA5002DEFA5 /* Frameworks */,
+				6EA4B02E2CE39DA5002DEFA5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				6EA4B01F2CE261BA002DEFA5 /* PacketTunnel */,
+				6EA4B0322CE39DA5002DEFA5 /* PacketTunnel */,
 			);
 			name = PacketTunnel;
 			packageProductDependencies = (
 			);
 			productName = PacketTunnel;
-			productReference = 6EA4B01D2CE261BA002DEFA5 /* PacketTunnel.appex */;
+			productReference = 6EA4B0302CE39DA5002DEFA5 /* PacketTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		97C146ED1CF9000F007C117D /* Runner */ = {
@@ -269,12 +250,10 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				00C4323F1A8CE1E087E98172 /* [CP] Embed Pods Frameworks */,
-				6EA4B0122CE24CC5002DEFA5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6EA4B0252CE261BA002DEFA5 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -296,7 +275,7 @@
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 97C146ED1CF9000F007C117D;
 					};
-					6EA4B01C2CE261BA002DEFA5 = {
+					6EA4B02F2CE39DA5002DEFA5 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 					97C146ED1CF9000F007C117D = {
@@ -320,7 +299,7 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
-				6EA4B01C2CE261BA002DEFA5 /* PacketTunnel */,
+				6EA4B02F2CE39DA5002DEFA5 /* PacketTunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -333,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EA4B01B2CE261BA002DEFA5 /* Resources */ = {
+		6EA4B02E2CE39DA5002DEFA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -457,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EA4B0192CE261BA002DEFA5 /* Sources */ = {
+		6EA4B02C2CE39DA5002DEFA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -480,11 +459,6 @@
 			isa = PBXTargetDependency;
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
-		};
-		6EA4B0252CE261BA002DEFA5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6EA4B01C2CE261BA002DEFA5 /* PacketTunnel */;
-			targetProxy = 6EA4B0242CE261BA002DEFA5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -637,7 +611,7 @@
 			};
 			name = Profile;
 		};
-		6EA4B0292CE261BA002DEFA5 /* Debug */ = {
+		6EA4B03A2CE39DA5002DEFA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -679,7 +653,7 @@
 			};
 			name = Debug;
 		};
-		6EA4B02A2CE261BA002DEFA5 /* Release */ = {
+		6EA4B03B2CE39DA5002DEFA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -718,7 +692,7 @@
 			};
 			name = Release;
 		};
-		6EA4B02B2CE261BA002DEFA5 /* Profile */ = {
+		6EA4B03C2CE39DA5002DEFA5 /* Profile */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -930,12 +904,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6EA4B0282CE261BA002DEFA5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
+		6EA4B03E2CE39DA5002DEFA5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6EA4B0292CE261BA002DEFA5 /* Debug */,
-				6EA4B02A2CE261BA002DEFA5 /* Release */,
-				6EA4B02B2CE261BA002DEFA5 /* Profile */,
+				6EA4B03A2CE39DA5002DEFA5 /* Debug */,
+				6EA4B03B2CE39DA5002DEFA5 /* Release */,
+				6EA4B03C2CE39DA5002DEFA5 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

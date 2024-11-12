@@ -5,6 +5,11 @@ import UIKit
 public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     private var eventSink: FlutterEventSink?
 
+    private lazy var adapter: V2rayCoreManager = {
+//        LeafAdapater.setPacketTunnelProvider(with: self)
+        return V2rayCoreManager.shared()
+    }()
+
     public static func register(with registrar: FlutterPluginRegistrar) {
         let methodChannel = FlutterMethodChannel(name: "flutter_v2ray", binaryMessenger: registrar.messenger())
         let eventChannel = FlutterEventChannel(name: "flutter_v2ray/status", binaryMessenger: registrar.messenger())
@@ -73,6 +78,7 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     private func startV2Ray(remark: String, config: String, blockedApps: [String], bypassSubnets: [String], proxyOnly: Bool, result: FlutterResult) {
         // 确保 result 被调用，输出状态信息
         print("startV2Ray===========>")
+
 //        controller.startV2ray(remark: remark, config: config, blockedApps: blockedApps, bypassSubnets: bypassSubnets)
         result("V2Ray started with remark \(remark) on iOS")
     }
