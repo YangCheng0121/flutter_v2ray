@@ -6,7 +6,7 @@ import NetworkExtension
 
 // 单例 V2rayCoreManager 实现（与 Java 类似）
 public class V2rayCoreManager {
-    public static var stage: FlutterEventSink?
+//    public static var stage: FlutterEventSink?
     
     private var manager = NETunnelProviderManager.shared()
 
@@ -15,6 +15,16 @@ public class V2rayCoreManager {
 
     public class func shared() -> V2rayCoreManager {
         return sharedV2rayCoreManager
+    }
+    
+    /// Packet tunnel provider.
+    private weak static var packetTunnelProvider: NEPacketTunnelProvider?
+
+    /// Set PacketTunnelProvider instance
+    /// - Parameter packetTunnelProvider: an instance of `NEPacketTunnelProvider`. Internally stored
+    ///   as a weak
+    public static func setPacketTunnelProvider(with packetTunnelProvider: NEPacketTunnelProvider) {
+        V2rayCoreManager.packetTunnelProvider = packetTunnelProvider
     }
      
     var isLibV2rayCoreInitialized = false
@@ -111,7 +121,7 @@ public class V2rayCoreManager {
     public func startCore() -> Bool {
         print("startCore========>")
 //        delegate?.startService()
-        loadVPNPreference() { error in
+        loadVPNPreference { error in
             guard error == nil else {
 //                fatalError("load VPN preference failed: \(error.debugDescription)")
                 print("加载VPN配置失败 \(error.debugDescription)")

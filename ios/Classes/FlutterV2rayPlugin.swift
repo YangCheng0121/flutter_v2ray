@@ -5,10 +5,8 @@ import UIKit
 public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     private var eventSink: FlutterEventSink?
 
-    private lazy var adapter: V2rayCoreManager = {
-//        LeafAdapater.setPacketTunnelProvider(with: self)
-        return V2rayCoreManager.shared()
-    }()
+    private lazy var controller: V2rayController = //        V2rayController.setPacketTunnelProvider(with: self)
+        .shared()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let methodChannel = FlutterMethodChannel(name: "flutter_v2ray", binaryMessenger: registrar.messenger())
@@ -33,7 +31,9 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
                     let proxyOnly = args["proxyOnly"] as? Bool ?? false
 
                     // 调用 startV2Ray 方法
-                    startV2Ray(remark: remark, config: config, blockedApps: blockedApps, bypassSubnets: bypassSubnets, proxyOnly: proxyOnly, result: result)
+                    controller.startV2Ray(remark: remark, config: config, blockedApps: blockedApps, bypassSubnets: bypassSubnets, proxyOnly: proxyOnly)
+                    // Successful response: pass `nil` or any value here.
+                    result(nil) // No data to return
                 } else {
                     result(FlutterError(code: "INVALID_ARGUMENTS", message: "Missing or invalid arguments for startV2Ray", details: nil))
                 }
@@ -73,14 +73,6 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     private func initializeV2Ray(result: FlutterResult) {
 //        sendStatusUpdate(state: "initialized")
         result("V2Ray initialized on iOS")
-    }
-
-    private func startV2Ray(remark: String, config: String, blockedApps: [String], bypassSubnets: [String], proxyOnly: Bool, result: FlutterResult) {
-        // 确保 result 被调用，输出状态信息
-        print("startV2Ray===========>")
-
-//        controller.startV2ray(remark: remark, config: config, blockedApps: blockedApps, bypassSubnets: bypassSubnets)
-        result("V2Ray started with remark \(remark) on iOS")
     }
 
     private func stopV2Ray(result: FlutterResult) {
