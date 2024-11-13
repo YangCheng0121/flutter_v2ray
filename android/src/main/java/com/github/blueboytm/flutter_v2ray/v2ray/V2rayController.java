@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.provider.Settings;
 
 import com.github.blueboytm.flutter_v2ray.v2ray.core.V2rayCoreManager;
 import com.github.blueboytm.flutter_v2ray.v2ray.services.V2rayProxyOnlyService;
@@ -49,6 +50,7 @@ public class V2rayController {
         if (AppConfigs.V2RAY_CONFIG == null) {
             return;
         }
+//        System.out.println("AppConfigs.V2RAY_CONFIG"+AppConfigs.V2RAY_CONFIG.CONNECTED_V2RAY_SERVER_ADDRESS);
         Intent start_intent;
         if (AppConfigs.V2RAY_CONNECTION_MODE == AppConfigs.V2RAY_CONNECTION_MODES.PROXY_ONLY) {
             start_intent = new Intent(context, V2rayProxyOnlyService.class);
