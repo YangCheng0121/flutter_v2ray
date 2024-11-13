@@ -33,11 +33,13 @@ public class V2rayController {
         }
 
         AppConfigs.V2RAY_CONFIG = v2rayConfig
-        print("v2rayConfig: \(AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_ADDRESS)")
+        if let address = AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_ADDRESS {
+            print(address)
+        }
 
         // 如果配置为 nil, 不做任何操作
         if AppConfigs.V2RAY_CONFIG == nil {
-            print("V2ray 配置为空")
+//            print("V2ray 配置为空")
             return
         }
 
