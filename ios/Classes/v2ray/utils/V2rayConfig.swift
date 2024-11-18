@@ -25,6 +25,8 @@ class V2rayConfig: NSObject {
     // 应用图标的资源 ID
     var APPLICATION_ICON: Int = 0
 
+    var NOTIFICATION_DISCONNECT_BUTTON_NAME: String = "DISCONNECT"
+
     // MARK: - NSCoding
 
 //    /// 解码器初始化方法，用于从 NSCoder 解码对象。
