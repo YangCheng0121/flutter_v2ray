@@ -50,7 +50,6 @@ public class V2rayController {
         if (AppConfigs.V2RAY_CONFIG == null) {
             return;
         }
-//        System.out.println("AppConfigs.V2RAY_CONFIG"+AppConfigs.V2RAY_CONFIG.CONNECTED_V2RAY_SERVER_ADDRESS);
         Intent start_intent;
         if (AppConfigs.V2RAY_CONNECTION_MODE == AppConfigs.V2RAY_CONNECTION_MODES.PROXY_ONLY) {
             start_intent = new Intent(context, V2rayProxyOnlyService.class);

@@ -33,9 +33,11 @@ public class V2rayController {
         }
 
         AppConfigs.V2RAY_CONFIG = v2rayConfig
-        if let address = AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_ADDRESS {
-            print(address)
-        }
+//        if let address = AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_ADDRESS {
+//            print(address)
+//        }
+        print(AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_ADDRESS ?? "Default Address")
+        print(AppConfigs.V2RAY_CONFIG?.CONNECTED_V2RAY_SERVER_PORT ?? "Default Port")
 
         // 如果配置为 nil, 不做任何操作
         if AppConfigs.V2RAY_CONFIG == nil {
