@@ -14,6 +14,9 @@ public class V2rayController {
         return sharedV2rayController
     }
 
+    //
+    private lazy var coreManager: V2rayCoreManager = .shared()
+
     // 启动 V2ray
     public func startV2Ray(remark: String, config: String, blockedApps: [String], bypassSubnets: [String], proxyOnly: Bool) {
         // 打印输入参数，便于调试
@@ -23,8 +26,7 @@ public class V2rayController {
 //        print("blockedApps: \(blockedApps)")
 //        print("bypassSubnets: \(bypassSubnets)")
 //        print("proxyOnly: \(proxyOnly)")
-        // 确保 result 被调用，输出状态信息
-//        print("startV2Ray===========>")
+
         // 解析 V2ray 配置
         guard let v2rayConfig = Utilities.parseV2rayJsonFile(remark: remark, config: config, blockedApplication: blockedApps, bypassSubnets: bypassSubnets) else {
             // 如果解析失败，直接返回
@@ -45,7 +47,7 @@ public class V2rayController {
         print(AppConfigs.V2RAY_CONFIG?.LOCAL_SOCKS5_PORT ?? 0)
         print(AppConfigs.V2RAY_CONFIG?.NOTIFICATION_DISCONNECT_BUTTON_NAME ?? "DISCONNECT")
         print(AppConfigs.V2RAY_CONFIG?.REMARK ?? "Default Remark")
-//        print(AppConfigs.V2RAY_CONFIG?.V2RAY_FULL_JSON_CONFIG ?? "Default Full JSON")
+        print(AppConfigs.V2RAY_CONFIG?.V2RAY_FULL_JSON_CONFIG ?? "Default Full JSON")
 
         // 如果配置为 nil, 不做任何操作
         if AppConfigs.V2RAY_CONFIG == nil {

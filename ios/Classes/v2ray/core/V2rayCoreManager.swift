@@ -8,8 +8,6 @@ import NetworkExtension
 public class V2rayCoreManager {
 //    public static var stage: FlutterEventSink?
     
-    private var manager = NETunnelProviderManager.shared()
-
 //    var v2rayServicesListener: V2RayServicesListener?
     private static var sharedV2rayCoreManager: V2rayCoreManager = .init()
 
@@ -17,6 +15,8 @@ public class V2rayCoreManager {
         return sharedV2rayCoreManager
     }
     
+    private var manager = NETunnelProviderManager.shared()
+   
     /// Packet tunnel provider.
     private weak static var packetTunnelProvider: NEPacketTunnelProvider?
 
