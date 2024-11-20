@@ -45,7 +45,8 @@ class _HomePageState extends State<HomePage> {
 
   // final config = TextEditingController(text: "vmess://eyJhZGQiOiAiMzguMTIuMjcuMTMyIiwgImFpZCI6ICIwIiwgImhvc3QiOiAiIiwgImlkIjogIjM5ZWRiZTFkLWUzZDktNGI0MC04YjY3LTI3Mjc5OGYzODUyZSIsICJuZXQiOiAia2NwIiwgInBhdGgiOiAiIiwgInBvcnQiOiA1OTQ3MywgInBzIjogIiIsICJzY3kiOiAibm9uZSIsICJ0bHMiOiAiIiwgInR5cGUiOiAibm9uZSIsICJ2IjogIjIifQ==");
   final config = TextEditingController(
-      text: "4nrZEw8xKHP+EVv4LEqmmeX+OYHDp6qYPNh0igUGMCXO5mSRnzep0BBu8W7G5Bm0FoPlrcBhBzqYD+LEwGmVRDFTDZvFhk52R2xnVkd87WQYFVX1pJVppB65Tb9swJxTMyC2jnmatE1ueeSUIewN3BQX8ba1GeMs5qyIDhoEUAcsNQ+GT3G37cbKCrkI9NMj1tL0pJyze5m6zjdEeqE90ImZmkHV6tAtcFrUC/mndRj1O0UhVktyYyNiQu2oLiS/t6kC+ELBh982jBDKkNAPGmOarX7b8cDb+u1G+E4j8b8DbGFXXr5tJXP4nMdnZXCuFxWzB/4ts5tEYVPEHBTZUaz9gqs+SfS4xE6jdX/CLpw=");
+      text:
+          "vmess://eyJhZGQiOiAiMzguMTY1LjMzLjEyNiIsICJhaWQiOiAiMCIsICJob3N0IjogIiIsICJpZCI6ICJhYjliMWUwZC05YzczLTQxNzYtODE5OS00N2I0OTNhMjJlNGMiLCAibmV0IjogImtjcCIsICJwYXRoIjogIiIsICJwb3J0IjogMjYzODgsICJwcyI6ICIiLCAic2N5IjogIm5vbmUiLCAidGxzIjogIiIsICJ0eXBlIjogIm5vbmUiLCAidiI6ICIyIn0=");
 
   bool proxyOnly = false;
   var v2rayStatus = ValueNotifier<V2RayStatus>(V2RayStatus());
@@ -54,7 +55,6 @@ class _HomePageState extends State<HomePage> {
   String? coreVersion;
 
   String remark = "Default Remark";
-
 
   void connect() async {
     if (await flutterV2ray.requestPermission()) {
@@ -135,42 +135,41 @@ class _HomePageState extends State<HomePage> {
     bypassSubnetController.text = bypassSubnets.join("\n");
     showDialog(
       context: context,
-      builder: (context) =>
-          Dialog(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    'Subnets:',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  TextFormField(
-                    controller: bypassSubnetController,
-                    maxLines: 5,
-                    minLines: 5,
-                  ),
-                  const SizedBox(height: 5),
-                  ElevatedButton(
-                    onPressed: () {
-                      bypassSubnets =
-                          bypassSubnetController.text.trim().split('\n');
-                      if (bypassSubnets.first.isEmpty) {
-                        bypassSubnets = [];
-                      }
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Submit'),
-                  ),
-                ],
+      builder: (context) => Dialog(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Subnets:',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            ),
+              const SizedBox(height: 5),
+              TextFormField(
+                controller: bypassSubnetController,
+                maxLines: 5,
+                minLines: 5,
+              ),
+              const SizedBox(height: 5),
+              ElevatedButton(
+                onPressed: () {
+                  bypassSubnets =
+                      bypassSubnetController.text.trim().split('\n');
+                  if (bypassSubnets.first.isEmpty) {
+                    bypassSubnets = [];
+                  }
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Submit'),
+              ),
+            ],
           ),
+        ),
+      ),
     );
   }
 
