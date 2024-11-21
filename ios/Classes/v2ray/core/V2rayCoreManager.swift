@@ -2,6 +2,20 @@ import Flutter
 import Foundation
 import NetworkExtension
 
+extension NEVPNStatus: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .disconnected: return "Disconnected"
+        case .invalid: return "Invalid"
+        case .connected: return "Connected"
+        case .connecting: return "Connecting"
+        case .disconnecting: return "Disconnecting"
+        case .reasserting: return "Reasserting"
+        default: return "Unknowed"
+        }
+    }
+}
+
 // import Libv2ray
 
 // 单例 V2rayCoreManager 实现（与 Java 类似）
@@ -40,15 +54,6 @@ public class V2rayCoreManager {
     
     public func setUpListener() {
         do {
-            // 将目标服务赋值给 v2rayServicesListener
-            
-//            v2rayServicesListener = targetService as? V2RayServicesListener
-            
-            // 初始化 V2Ray 环境
-//            let userAssetsPath = Utilities.getUserAssetsPath()
-//            Libv2ray.IOSLibXrayLiteInitV2Env(userAssetsPath, "")
-//            print("userAssetsPath============>", userAssetsPath)
-            
             isLibV2rayCoreInitialized = true // 标记初始化成功
             SERVICE_DURATION = "00:00:00" // 初始化服务时长
             seconds = 0 // 秒数重置
@@ -69,50 +74,69 @@ public class V2rayCoreManager {
         }
     }
     
-    // 加载配置
     public func loadVPNPreference(completion: @escaping (Error?) -> Void) {
-        // 尝试加载所有现有的 VPN 配置
+        // 从系统中加载所有已存在的 VPN 配置
         NETunnelProviderManager.loadAllFromPreferences { managers, error in
-            // 如果加载失败或返回的配置为空，则直接调用回调函数并返回错误
+            // 如果加载失败或返回的配置为空，则调用回调函数并返回错误
             guard let managers = managers, error == nil else {
-                completion(error)
+                completion(error) // 将错误传递给调用者
                 return
             }
 
             // 检查是否没有现有的 VPN 配置
             if managers.count == 0 {
-                // 如果没有现有配置，则创建一个新的 NETunnelProviderManager 实例
+                // 如果没有配置，则创建一个新的 NETunnelProviderManager 实例
                 let newManager = NETunnelProviderManager()
                 
                 // 配置新的 VPN 协议
                 newManager.protocolConfiguration = NETunnelProviderProtocol()
                 
-                // 设置描述，以便用户识别此 VPN 配置
+                // 设置用户可见的 VPN 配置描述，用于识别该配置
                 newManager.localizedDescription = "Sulian VPN"
                 
+                // 设置服务器地址（此处仅作标识，不是真实的服务器地址）
                 newManager.protocolConfiguration?.serverAddress = "Sulian VPN"
                 
-                // 将新的 VPN 配置保存到系统中
+                // 保存新的 VPN 配置到系统偏好设置中
                 newManager.saveToPreferences { error in
-                    // 如果保存出错，则返回错误
+                    // 如果保存失败，则返回错误
                     guard error == nil else {
-                        completion(error)
+                        completion(error) // 保存失败时，返回错误
                         return
                     }
                     
-                    // 成功保存后，重新加载配置以确保生效
+                    // 成功保存后，重新加载配置以确保其生效
                     newManager.loadFromPreferences { _ in
-                        // 将当前 manager 设置为新创建的配置
+                        // 将当前实例的 `manager` 设置为新创建的配置
                         self.manager = newManager
-                        // 回调成功
+                        // 调用回调函数表示成功
                         completion(nil)
                     }
                 }
             } else {
-                // 如果已存在至少一个 VPN 配置，则直接使用第一个配置
+                // 如果已存在至少一个配置，则直接使用第一个
                 self.manager = managers[0]
-                // 回调成功
+                // 调用回调函数表示成功
                 completion(nil)
+            }
+        }
+    }
+    
+    public func enableVPNManager(completion: @escaping (Error?) -> Void) {
+        // 启用当前的 VPN 配置
+        manager.isEnabled = true
+
+        // 保存启用状态到系统偏好设置中
+        manager.saveToPreferences { error in
+            // 如果保存失败，则返回错误
+            guard error == nil else {
+                completion(error) // 将错误传递给调用者
+                return
+            }
+
+            // 成功保存后重新加载配置，以确保其生效
+            self.manager.loadFromPreferences { error in
+                completion(error) // 返回加载结果（可能是成功或错误）
             }
         }
     }
@@ -120,25 +144,6 @@ public class V2rayCoreManager {
     // 启动核心逻辑
     public func startCore() -> Bool {
         print("startCore========>")
-//        delegate?.startService()
-        loadVPNPreference { error in
-            guard error == nil else {
-//                fatalError("load VPN preference failed: \(error.debugDescription)")
-                print("加载VPN配置失败 \(error.debugDescription)")
-                return
-            }
-
-//            manager.enableVPNManager { error in
-//                guard error == nil else {
-//                    fatalError("enable VPN failed: \(error.debugDescription)")
-//                }
-//                manager.toggleVPNConnection { error in
-//                    guard error == nil else {
-//                        fatalError("toggle VPN connection failed: \(error.debugDescription)")
-//                    }
-//                }
-//            }
-        }
         V2RAY_STATE = AppConfigs.V2RAY_STATES.V2RAY_CONNECTING // 设置状态为连接中
         
         if !isLibV2rayCoreInitialized {

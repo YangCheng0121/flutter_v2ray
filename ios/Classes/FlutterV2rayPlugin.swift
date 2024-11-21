@@ -93,19 +93,42 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     }
 
     private func requestPermission(result: @escaping FlutterResult) {
-        coreManager.loadVPNPreference { error in
+        coreManager.loadVPNPreference { [weak self] error in
             if let error = error {
-                // 如果加载 VPN 配置失败，返回 false 并附带错误信息
-                result(FlutterError(
+                self?.handleFlutterError(
+                    result: result,
                     code: "VPN_LOAD_FAILED",
-                    message: "Failed to load VPN preference: \(error.localizedDescription)",
-                    details: nil
-                ))
+                    message: "Failed to load VPN preference",
+                    details: error.localizedDescription
+                )
                 return
             }
-            // 如果没有错误，返回 true 表示成功
-            result(true)
+
+            self?.coreManager.enableVPNManager { error in
+                if let error = error {
+                    self?.handleFlutterError(
+                        result: result,
+                        code: "VPN_ENABLE_FAILED",
+                        message: "Failed to enable VPN",
+                        details: error.localizedDescription
+                    )
+                    return
+                }
+
+                // 成功返回
+                result(true)
+            }
         }
+    }
+
+    /// 统一处理错误并返回 FlutterError
+    private func handleFlutterError(result: @escaping FlutterResult, code: String, message: String, details: String?) {
+        print("[Error] Code: \(code), Message: \(message), Details: \(details ?? "No details")")
+        result(FlutterError(
+            code: code,
+            message: message,
+            details: details
+        ))
     }
 
     private func getCoreVersion(result: FlutterResult) {
