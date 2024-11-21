@@ -25,6 +25,9 @@ class FlutterV2ray {
     if (Platform.isAndroid) {
       return await FlutterV2rayPlatform.instance.requestPermission();
     }
+    if (Platform.isIOS) {
+      return await FlutterV2rayPlatform.instance.requestPermission();
+    }
     return true;
   }
 
@@ -76,7 +79,6 @@ class FlutterV2ray {
     List<String>? bypassSubnets,
     bool proxyOnly = false,
     String notificationDisconnectButtonName = "DISCONNECT",
-
   }) async {
     try {
       if (jsonDecode(config) == null) {

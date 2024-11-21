@@ -90,7 +90,7 @@ public class V2rayCoreManager {
                 // 设置描述，以便用户识别此 VPN 配置
                 newManager.localizedDescription = "Sulian VPN"
                 
-                newManager.protocolConfiguration?.serverAddress = "your.server.address.com"
+                newManager.protocolConfiguration?.serverAddress = "Sulian VPN"
                 
                 // 将新的 VPN 配置保存到系统中
                 newManager.saveToPreferences { error in

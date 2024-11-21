@@ -92,14 +92,20 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
         result(delay)
     }
 
-    private func requestPermission(result: FlutterResult) {
-        coreManager.loadVPNPreference() { error in
-            guard error == nil else {
-                fatalError("load VPN preference failed: \(error.debugDescription)")
+    private func requestPermission(result: @escaping FlutterResult) {
+        coreManager.loadVPNPreference { error in
+            if let error = error {
+                // 如果加载 VPN 配置失败，返回 false 并附带错误信息
+                result(FlutterError(
+                    code: "VPN_LOAD_FAILED",
+                    message: "Failed to load VPN preference: \(error.localizedDescription)",
+                    details: nil
+                ))
+                return
             }
+            // 如果没有错误，返回 true 表示成功
+            result(true)
         }
-
-        result(true)
     }
 
     private func getCoreVersion(result: FlutterResult) {
