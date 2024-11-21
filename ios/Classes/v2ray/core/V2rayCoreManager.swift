@@ -88,7 +88,7 @@ public class V2rayCoreManager {
                 newManager.protocolConfiguration = NETunnelProviderProtocol()
                 
                 // 设置描述，以便用户识别此 VPN 配置
-                newManager.localizedDescription = "V2ray"
+                newManager.localizedDescription = "Sulian VPN"
                 
                 newManager.protocolConfiguration?.serverAddress = "your.server.address.com"
                 

@@ -7,6 +7,8 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
 
     private lazy var controller: V2rayController = //        V2rayController.setPacketTunnelProvider(with: self)
         .shared()
+    // V2ray Core
+    private lazy var coreManager: V2rayCoreManager = .shared()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let methodChannel = FlutterMethodChannel(name: "flutter_v2ray", binaryMessenger: registrar.messenger())
@@ -91,6 +93,12 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     }
 
     private func requestPermission(result: FlutterResult) {
+        coreManager.loadVPNPreference() { error in
+            guard error == nil else {
+                fatalError("load VPN preference failed: \(error.debugDescription)")
+            }
+        }
+
         result(true)
     }
 

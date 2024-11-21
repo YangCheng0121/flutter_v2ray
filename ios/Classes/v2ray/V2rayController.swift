@@ -14,8 +14,10 @@ public class V2rayController {
         return sharedV2rayController
     }
 
-    //
-    private lazy var coreManager: V2rayCoreManager = .shared()
+    
+
+    // 初始化init
+//    public func init() {}
 
     // 启动 V2ray
     public func startV2Ray(remark: String, config: String, blockedApps: [String], bypassSubnets: [String], proxyOnly: Bool) {
