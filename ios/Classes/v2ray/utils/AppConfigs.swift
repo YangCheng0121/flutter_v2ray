@@ -15,7 +15,7 @@ class AppConfigs {
     static var V2RAY_CONFIG: V2rayConfig?
 
     /// 当前 V2Ray 状态，默认为断开连接状态。
-    static var V2RAY_STATE: V2RAY_STATES = .V2RAY_DISCONNECTED
+    static var V2RAY_STATE: V2RAY_STATES = .DISCONNECT
 
     /// 是否启用流量和速度统计，默认为启用。
     static var ENABLE_TRAFFIC_AND_SPEED_STATISTICS: Bool = true
@@ -35,9 +35,9 @@ class AppConfigs {
 
     /// V2Ray 状态的枚举，表示当前的连接状态。
     enum V2RAY_STATES {
-        case V2RAY_CONNECTED // 已连接状态
-        case V2RAY_DISCONNECTED // 断开连接状态
-        case V2RAY_CONNECTING // 正在连接状态
+        case CONNECTED // 已连接状态
+        case DISCONNECT // 断开连接状态
+        case CONNECTING // 正在连接状态
     }
 
     /// V2Ray 连接模式的枚举，定义不同的连接方式。

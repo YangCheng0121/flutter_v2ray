@@ -49,7 +49,7 @@ public class V2rayController {
         print(AppConfigs.V2RAY_CONFIG?.LOCAL_SOCKS5_PORT ?? 0)
         print(AppConfigs.V2RAY_CONFIG?.NOTIFICATION_DISCONNECT_BUTTON_NAME ?? "DISCONNECT")
         print(AppConfigs.V2RAY_CONFIG?.REMARK ?? "Default Remark")
-        print(AppConfigs.V2RAY_CONFIG?.V2RAY_FULL_JSON_CONFIG ?? "Default Full JSON")
+//        print(AppConfigs.V2RAY_CONFIG?.V2RAY_FULL_JSON_CONFIG ?? "Default Full JSON")
 
         // 如果配置为 nil, 不做任何操作
         if AppConfigs.V2RAY_CONFIG == nil {
@@ -57,6 +57,7 @@ public class V2rayController {
             return
         }
 
+        print(AppConfigs.V2RAY_STATE)
         // 这里可以加入启动 V2ray 的其他逻辑
 //        print("V2ray 配置已启动")
     }

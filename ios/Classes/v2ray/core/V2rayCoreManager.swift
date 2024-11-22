@@ -50,7 +50,7 @@ public class V2rayCoreManager {
     var downloadSpeed = 0
     var totalDownload = 0
     var totalUpload = 0
-    var V2RAY_STATE: AppConfigs.V2RAY_STATES = .V2RAY_DISCONNECTED
+    var V2RAY_STATE: AppConfigs.V2RAY_STATES = .DISCONNECT
     
     public func setUpListener() {
         do {
@@ -144,7 +144,7 @@ public class V2rayCoreManager {
     // 启动核心逻辑
     public func startCore() -> Bool {
         print("startCore========>")
-        V2RAY_STATE = AppConfigs.V2RAY_STATES.V2RAY_CONNECTING // 设置状态为连接中
+        V2RAY_STATE = AppConfigs.V2RAY_STATES.CONNECTED // 设置状态为连接中
         
         if !isLibV2rayCoreInitialized {
             print("Error: \(String(describing: V2rayCoreManager.self)) startCore failed => LibV2rayCore should be initialized before start.")
