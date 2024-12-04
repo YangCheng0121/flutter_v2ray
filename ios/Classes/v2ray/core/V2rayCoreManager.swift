@@ -1,6 +1,7 @@
 import Flutter
 import Foundation
 import NetworkExtension
+import LibXray
 
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
