@@ -51,6 +51,18 @@ public class V2rayCoreManager {
     var totalDownload = 0
     var totalUpload = 0
     var V2RAY_STATE: AppConfigs.V2RAY_STATES = .DISCONNECT
+
+    /// Designated initializer.
+    public init() {
+        
+    }
+
+    /// Set PacketTunnelProvider instance
+    /// - Parameter packetTunnelProvider: an instance of `NEPacketTunnelProvider`. Internally stored
+    ///   as a weak
+    public static func setPacketTunnelProvider(with packetTunnelProvider: NEPacketTunnelProvider) {
+        V2rayCoreManager.packetTunnelProvider = packetTunnelProvider
+    }
     
     public func setUpListener() {
         do {
@@ -122,7 +134,26 @@ public class V2rayCoreManager {
         }
     }
     
-    public func enableVPNManager(completion: @escaping (Error?) -> Void) {
+   
+    // 启动核心逻辑
+    public func startCore() -> Bool {
+        print("startCore========>")
+        V2RAY_STATE = AppConfigs.V2RAY_STATES.CONNECTED // 设置状态为连接中
+        
+        if !isLibV2rayCoreInitialized {
+            print("Error: \(String(describing: V2rayCoreManager.self)) startCore failed => LibV2rayCore should be initialized before start.")
+            return false // 如果没有初始化，返回失败
+        }
+//        do {
+//            try manager.connection.startVPNTunnel()
+//        } catch {
+//            print("Failed to start VPN tunnel:", error)
+//        }
+
+        return true
+    }
+
+     public func enableVPNManager(completion: @escaping (Error?) -> Void) {
         // 启用当前的 VPN 配置
         manager.isEnabled = true
 
@@ -141,23 +172,6 @@ public class V2rayCoreManager {
         }
     }
 
-    // 启动核心逻辑
-    public func startCore() -> Bool {
-        print("startCore========>")
-        V2RAY_STATE = AppConfigs.V2RAY_STATES.CONNECTED // 设置状态为连接中
-        
-        if !isLibV2rayCoreInitialized {
-            print("Error: \(String(describing: V2rayCoreManager.self)) startCore failed => LibV2rayCore should be initialized before start.")
-            return false // 如果没有初始化，返回失败
-        }
-//        do {
-//            try manager.connection.startVPNTunnel()
-//        } catch {
-//            print("Failed to start VPN tunnel:", error)
-//        }
-
-        return true
-    }
     
     // 停止核心逻辑
     public func stopCore() {
