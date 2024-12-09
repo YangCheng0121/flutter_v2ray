@@ -6,12 +6,13 @@
 //
 
 import NetworkExtension
+//import flutter_v2ray
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
-    private lazy var coreManager: V2rayCoreManager = {
-        V2rayCoreManager.setPacketTunnelProvider(with: self)
-        return V2rayCoreManager.shared()
-    }()
+//    private lazy var coreManager: V2rayCoreManager = {
+//        V2rayCoreManager.setPacketTunnelProvider(with: self)
+//        return V2rayCoreManager.shared()
+//    }()
 
 
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
@@ -35,7 +36,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         settings.proxySettings = nil
         settings.mtu = 1500
 
-        self.adapter.start(completionHandler: completionHandler)
+//        self.adapter.start(completionHandler: completionHandler)
 
         setTunnelNetworkSettings(settings) { error in
             if let error = error {

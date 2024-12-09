@@ -40,7 +40,7 @@ public class V2rayCoreManager {
     /// - Parameter packetTunnelProvider: an instance of `NEPacketTunnelProvider`. Internally stored
     ///   as a weak
     public static func setPacketTunnelProvider(with packetTunnelProvider: NEPacketTunnelProvider) {
-        V2rayCoreManager.packetTunnelProvider = packetTunnelProvider
+        self.packetTunnelProvider = packetTunnelProvider
     }
      
     var isLibV2rayCoreInitialized = false
@@ -57,13 +57,6 @@ public class V2rayCoreManager {
     /// Designated initializer.
     public init() {
         
-    }
-
-    /// Set PacketTunnelProvider instance
-    /// - Parameter packetTunnelProvider: an instance of `NEPacketTunnelProvider`. Internally stored
-    ///   as a weak
-    public static func setPacketTunnelProvider(with packetTunnelProvider: NEPacketTunnelProvider) {
-        V2rayCoreManager.packetTunnelProvider = packetTunnelProvider
     }
     
     public func setUpListener() {
