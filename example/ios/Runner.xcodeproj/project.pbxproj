@@ -11,6 +11,7 @@
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3EDCE9E3B070D9F8521ECC59 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36B260334A6C1D460268582 /* Pods_Runner.framework */; };
+		6E6B693C2D00A9670049DD13 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6B693B2D00A9670049DD13 /* libresolv.tbd */; };
 		6EA4B03F2CE39E05002DEFA5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */; };
 		6EAC00122CE41D2D004A5BE1 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAC00102CE41D2D004A5BE1 /* PacketTunnelProvider.swift */; };
 		72E6F3E66F970B2ED4A9B52A /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633CF1F00A9D2CE02511EAFD /* Pods_RunnerTests.framework */; };
@@ -28,7 +29,7 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		6EAC00152CE41D3A004A5BE1 /* PBXContainerItemProxy */ = {
+		6E6B693E2D036F790049DD13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
@@ -36,19 +37,6 @@
 			remoteInfo = PacketTunnel;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6EAC00172CE41D3A004A5BE1 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F4321A9AC487CC615149A4A /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +46,7 @@
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		633CF1F00A9D2CE02511EAFD /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6B693B2D00A9670049DD13 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6EA4B0182CE24CD4002DEFA5 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		6EA4B0302CE39DA5002DEFA5 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E6B693C2D00A9670049DD13 /* libresolv.tbd in Frameworks */,
 				3EDCE9E3B070D9F8521ECC59 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +184,7 @@
 		FD291AF566C603FC3AEC6108 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E6B693B2D00A9670049DD13 /* libresolv.tbd */,
 				F36B260334A6C1D460268582 /* Pods_Runner.framework */,
 				633CF1F00A9D2CE02511EAFD /* Pods_RunnerTests.framework */,
 				6EA4B0082CE24CC5002DEFA5 /* NetworkExtension.framework */,
@@ -253,12 +244,11 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				00C4323F1A8CE1E087E98172 /* [CP] Embed Pods Frameworks */,
-				6EAC00172CE41D3A004A5BE1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6EAC00162CE41D3A004A5BE1 /* PBXTargetDependency */,
+				6E6B693F2D036F790049DD13 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -466,10 +456,10 @@
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
 		};
-		6EAC00162CE41D3A004A5BE1 /* PBXTargetDependency */ = {
+		6E6B693F2D036F790049DD13 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6EA4B02F2CE39DA5002DEFA5 /* PacketTunnel */;
-			targetProxy = 6EAC00152CE41D3A004A5BE1 /* PBXContainerItemProxy */;
+			targetProxy = 6E6B693E2D036F790049DD13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

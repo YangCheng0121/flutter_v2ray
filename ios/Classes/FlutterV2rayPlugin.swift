@@ -5,8 +5,8 @@ import UIKit
 public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     private var eventSink: FlutterEventSink?
 
-    private lazy var controller: V2rayController = //        V2rayController.setPacketTunnelProvider(with: self)
-        .shared()
+    // V2ray Controller
+    private lazy var controller: V2rayController = .shared()
     // V2ray Core
     private lazy var coreManager: V2rayCoreManager = .shared()
 

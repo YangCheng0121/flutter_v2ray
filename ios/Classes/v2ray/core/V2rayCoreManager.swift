@@ -1,5 +1,6 @@
 import Flutter
 import Foundation
+import LibXray
 import NetworkExtension
 
 extension NEVPNStatus: CustomStringConvertible {
@@ -16,13 +17,8 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
-// import Libv2ray
-
-// 单例 V2rayCoreManager 实现（与 Java 类似）
+/// 单例 V2rayCoreManager 实现（与 Java 类似）
 public class V2rayCoreManager {
-//    public static var stage: FlutterEventSink?
-    
-//    var v2rayServicesListener: V2RayServicesListener?
     private static var sharedV2rayCoreManager: V2rayCoreManager = .init()
 
     public class func shared() -> V2rayCoreManager {
@@ -30,6 +26,12 @@ public class V2rayCoreManager {
     }
     
     private var manager = NETunnelProviderManager.shared()
+    
+    /// Network routes monitor.
+    private var networkMonitor: NWPathMonitor?
+
+    /// Private queue used to synchronize access to `V2rayCoreManager` members.
+    private let workQueue = DispatchQueue(label: "V2rayCoreManagerWorkQueue")
    
     /// Packet tunnel provider.
     private weak static var packetTunnelProvider: NEPacketTunnelProvider?
