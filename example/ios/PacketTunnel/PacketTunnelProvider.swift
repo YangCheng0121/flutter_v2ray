@@ -8,6 +8,11 @@
 import NetworkExtension
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
+    private lazy var coreManager: V2rayCoreManager = {
+        V2rayCoreManager.setPacketTunnelProvider(with: self)
+        return V2rayCoreManager.shared()
+    }()
+
 
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         // Add code here to start the process of connecting the tunnel.
