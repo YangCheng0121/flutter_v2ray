@@ -1,7 +1,7 @@
 import Flutter
 import Foundation
-import NetworkExtension
 import LibXray
+import NetworkExtension
 
 extension NEVPNStatus: CustomStringConvertible {
     public var description: String {
@@ -17,13 +17,8 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
-// import Libv2ray
-
-// 单例 V2rayCoreManager 实现（与 Java 类似）
+/// 单例 V2rayCoreManager 实现（与 Java 类似）
 public class V2rayCoreManager {
-//    public static var stage: FlutterEventSink?
-    
-//    var v2rayServicesListener: V2RayServicesListener?
     private static var sharedV2rayCoreManager: V2rayCoreManager = .init()
 
     public class func shared() -> V2rayCoreManager {
@@ -31,6 +26,12 @@ public class V2rayCoreManager {
     }
     
     private var manager = NETunnelProviderManager.shared()
+    
+    /// Network routes monitor.
+    private var networkMonitor: NWPathMonitor?
+
+    /// Private queue used to synchronize access to `V2rayCoreManager` members.
+    private let workQueue = DispatchQueue(label: "V2rayCoreManagerWorkQueue")
    
     /// Packet tunnel provider.
     private weak static var packetTunnelProvider: NEPacketTunnelProvider?
@@ -123,6 +124,24 @@ public class V2rayCoreManager {
         }
     }
     
+    // 启动核心逻辑
+    public func startCore() -> Bool {
+        print("startCore========>")
+        V2RAY_STATE = AppConfigs.V2RAY_STATES.CONNECTED // 设置状态为连接中
+        
+        if !isLibV2rayCoreInitialized {
+            print("Error: \(String(describing: V2rayCoreManager.self)) startCore failed => LibV2rayCore should be initialized before start.")
+            return false // 如果没有初始化，返回失败
+        }
+//        do {
+//            try manager.connection.startVPNTunnel()
+//        } catch {
+//            print("Failed to start VPN tunnel:", error)
+//        }
+        
+        return true
+    }
+    
     public func enableVPNManager(completion: @escaping (Error?) -> Void) {
         // 启用当前的 VPN 配置
         manager.isEnabled = true
@@ -142,24 +161,6 @@ public class V2rayCoreManager {
         }
     }
 
-    // 启动核心逻辑
-    public func startCore() -> Bool {
-        print("startCore========>")
-        V2RAY_STATE = AppConfigs.V2RAY_STATES.CONNECTED // 设置状态为连接中
-        
-        if !isLibV2rayCoreInitialized {
-            print("Error: \(String(describing: V2rayCoreManager.self)) startCore failed => LibV2rayCore should be initialized before start.")
-            return false // 如果没有初始化，返回失败
-        }
-//        do {
-//            try manager.connection.startVPNTunnel()
-//        } catch {
-//            print("Failed to start VPN tunnel:", error)
-//        }
-
-        return true
-    }
-    
     // 停止核心逻辑
     public func stopCore() {
 //        delegate?.stopService()

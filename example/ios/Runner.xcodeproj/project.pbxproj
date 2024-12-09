@@ -29,7 +29,7 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		6EAC00152CE41D3A004A5BE1 /* PBXContainerItemProxy */ = {
+		6E6B693E2D036F790049DD13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
 			proxyType = 1;
@@ -37,19 +37,6 @@
 			remoteInfo = PacketTunnel;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6EAC00172CE41D3A004A5BE1 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F4321A9AC487CC615149A4A /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -257,12 +244,11 @@
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				00C4323F1A8CE1E087E98172 /* [CP] Embed Pods Frameworks */,
-				6EAC00172CE41D3A004A5BE1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6EAC00162CE41D3A004A5BE1 /* PBXTargetDependency */,
+				6E6B693F2D036F790049DD13 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -470,10 +456,10 @@
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
 		};
-		6EAC00162CE41D3A004A5BE1 /* PBXTargetDependency */ = {
+		6E6B693F2D036F790049DD13 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6EA4B02F2CE39DA5002DEFA5 /* PacketTunnel */;
-			targetProxy = 6EAC00152CE41D3A004A5BE1 /* PBXContainerItemProxy */;
+			targetProxy = 6E6B693E2D036F790049DD13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
