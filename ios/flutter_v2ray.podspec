@@ -18,7 +18,8 @@ A new Flutter plugin project.
   s.platform = :ios, '14.0'
 
   # 添加 Framework 支持
-  s.vendored_frameworks = 'Frameworks/LibXray.xcframework'
+  # s.vendored_frameworks = 'Frameworks/LibXray.xcframework'
+  s.vendored_frameworks = 'Frameworks/XRayCore.xcframework'
   s.static_framework    = true
 
   # Flutter.framework does not contain a i386 slice.
