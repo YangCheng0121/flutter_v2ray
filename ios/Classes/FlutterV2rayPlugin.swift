@@ -1,5 +1,5 @@
 import Flutter
-import LibXray
+//import LibXray
 import NetworkExtension
 import UIKit
 
@@ -122,16 +122,17 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
 
     // 获取核心版本号
     private func handleGetCoreVersion(_ call: FlutterMethodCall, result: FlutterResult) {
-        let baseVersion = LibXrayXrayVersion()
-        // Call the function
-        if let jsonObject = Utilities.decodeBase64AndParseJSON(baseVersion) {
-            // Access individual keys in the JSON object
-            if let data = jsonObject["data"] as? String {
-                result("v\(data)")
-            }
-        } else {
-            result(nil)
-        }
+//        let baseVersion = LibXrayXrayVersion()
+//        // Call the function
+//        if let jsonObject = Utilities.decodeBase64AndParseJSON(baseVersion) {
+//            // Access individual keys in the JSON object
+//            if let data = jsonObject["data"] as? String {
+//                result("v\(data)")
+//            }
+//        } else {
+//            result(nil)
+//        }
+        result("v1.0.0")
     }
 
     // 检查VPN
