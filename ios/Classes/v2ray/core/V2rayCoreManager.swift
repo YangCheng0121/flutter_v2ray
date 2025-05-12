@@ -51,8 +51,16 @@ public class V2rayCoreManager {
             return
         }
 
-        V2RAY_STATE = .CONNECTED
-        loadVPNConfigurationAndStartTunnel()
+//        V2RAY_STATE = .CONNECTED
+        loadVPNConfigurationAndStartTunnel { error in
+            if let error = error {
+                print("VPN操作失败: \(error.localizedDescription)")
+                // 更新UI显示错误
+            } else {
+                print("VPN启动成功")
+                // 更新UI状态
+            }
+        }
 
 //        networkMonitor.startNetworkMonitoring { isChange in
 //            if isChange {
@@ -85,42 +93,118 @@ public class V2rayCoreManager {
 
     // MARK: - 加载现有VPN配置并启动VPN隧道
 
-    private func loadVPNConfigurationAndStartTunnel() {
-        NETunnelProviderManager.loadAllFromPreferences { [weak self] managers, _ in
-            guard let self = self else { return }
+    // 添加一个状态锁防止重复操作
+    private var isVPNOperationInProgress = false
+
+    private func loadVPNConfigurationAndStartTunnel(completion: @escaping (Error?) -> Void) {
+        // 防止重复点击
+        guard !isVPNOperationInProgress else {
+            completion(NSError(domain: "VPNControl", code: -1, userInfo: [NSLocalizedDescriptionKey: "操作正在进行中"]))
+            return
+        }
+        isVPNOperationInProgress = true
+
+        NETunnelProviderManager.loadAllFromPreferences { [weak self] managers, error in
+            guard let self = self else {
+                completion(NSError(domain: "VPNControl", code: -2, userInfo: [NSLocalizedDescriptionKey: "对象已释放"]))
+                self?.isVPNOperationInProgress = false
+                return
+            }
+
+            if let error = error {
+                completion(error)
+                self.isVPNOperationInProgress = false
+                return
+            }
+
             let targetDescription = AppConfigs.APPLICATION_NAME
             let existingManager = managers?.first { $0.localizedDescription == targetDescription }
 
-            if let existingManager = existingManager {
-                // 直接复用现有配置（不重复操作）
-                self.manager = existingManager
-                self.manager.isEnabled = true
-                self.manager.saveToPreferences { _ in
-                    self.manager.loadFromPreferences { _ in
-                        self.manager.saveToPreferences { _ in
-                            self.manager.loadFromPreferences { _ in
-                                self.startVPNTunnel()
-                            }
-                        }
-                    }
+            let handleError: (Error?) -> Void = { error in
+                DispatchQueue.main.async {
+                    completion(error)
+                    self.isVPNOperationInProgress = false
                 }
-            } else {
-                // 首次创建配置时，执行两次 save+load（核心改动）
-                let tunnelProtocol = createVPNProtocol()
-                let newManager = NETunnelProviderManager()
-                newManager.protocolConfiguration = tunnelProtocol
-                newManager.localizedDescription = targetDescription
-                newManager.isEnabled = true
+            }
 
-                // 第一次保存和加载
-                newManager.saveToPreferences { _ in
-                    newManager.loadFromPreferences { _ in
-                        // 第二次保存和加载
-                        newManager.saveToPreferences { _ in
-                            self.manager = newManager
-                            newManager.loadFromPreferences { _ in
-                                self.startVPNTunnel()
-                            }
+            self.isVPNOperationInProgress = false
+
+            if let existingManager = existingManager {
+                self.handleExistingManager(existingManager, completion: handleError)
+            } else {
+                self.createNewManager(completion: handleError)
+            }
+        }
+    }
+
+    private func handleExistingManager(_ manager: NETunnelProviderManager, completion: @escaping (Error?) -> Void) {
+        manager.isEnabled = true
+
+        manager.saveToPreferences { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+
+            manager.loadFromPreferences { error in
+                if let error = error {
+                    completion(error)
+                    return
+                }
+
+                // 检查是否已经是激活状态
+                if manager.connection.status == .connected {
+                    completion(NSError(domain: "VPNControl", code: -3, userInfo: [NSLocalizedDescriptionKey: "已经连接"]))
+                    return
+                }
+
+                do {
+                    try manager.connection.startVPNTunnel()
+                    completion(nil)
+                } catch {
+                    completion(error)
+                }
+            }
+        }
+    }
+
+    private func createNewManager(completion: @escaping (Error?) -> Void) {
+        let tunnelProtocol = createVPNProtocol()
+        let newManager = NETunnelProviderManager()
+        newManager.protocolConfiguration = tunnelProtocol
+        newManager.localizedDescription = AppConfigs.APPLICATION_NAME
+        newManager.isEnabled = true
+
+        newManager.saveToPreferences { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+
+            newManager.loadFromPreferences { error in
+                if let error = error {
+                    completion(error)
+                    return
+                }
+
+                // 第二次保存确保配置持久化
+                newManager.saveToPreferences { error in
+                    if let error = error {
+                        completion(error)
+                        return
+                    }
+
+                    newManager.loadFromPreferences { error in
+                        if let error = error {
+                            completion(error)
+                            return
+                        }
+
+                        do {
+                            try newManager.connection.startVPNTunnel()
+                            completion(nil)
+                        } catch {
+                            completion(error)
                         }
                     }
                 }
@@ -155,6 +239,7 @@ public class V2rayCoreManager {
     // MARK: - 停止核心逻辑
 
     public func stopCore() {
+        stopTrafficStatsTimer()
         NETunnelProviderManager.loadAllFromPreferences { managers, error in
             guard let managers = managers, error == nil else {
                 return
@@ -182,7 +267,7 @@ public class V2rayCoreManager {
 
                         // 确认配置已保存后再停止隧道
                         self.manager.connection.stopVPNTunnel()
-                        self.stopTrafficStatsTimer()
+
                         os_log("VPN 核心已停止", log: appLog, type: .info)
                     }
                 }
@@ -193,8 +278,12 @@ public class V2rayCoreManager {
     // MARK: - 封装获取流量统计和发送到 Flutter 的功能
 
     func getTrafficStatsAndSendToFlutter() {
-        guard let vpnConnection = manager.connection as? NETunnelProviderSession else {
-            print("Error: VPN connection is not available.")
+//        guard let vpnConnection = manager.connection as? NETunnelProviderSession else {
+//            os_log("错误：VPN 连接不可用。", log: appLog, type: .error)
+//            return
+//        }
+        let vpnConnection = manager.connection as? NETunnelProviderSession
+        if ![.connected].contains(vpnConnection?.status) {
             return
         }
 
@@ -202,9 +291,9 @@ public class V2rayCoreManager {
         do {
             let messageData = try JSONSerialization.data(withJSONObject: message, options: [])
 
-            try vpnConnection.sendProviderMessage(messageData) { response in
+            try vpnConnection?.sendProviderMessage(messageData) { response in
                 guard let response = response else {
-                    print("No response received")
+                    os_log("无数据相应", log: appLog, type: .error)
                     return
                 }
 
@@ -249,15 +338,14 @@ public class V2rayCoreManager {
                             "\(totalDownload)", // 总下载
                             connectStatus // 当前状态
                         ])
-                    } else {
-                        print("Failed to decode response as JSON")
                     }
                 } catch {
-                    print("Error decoding JSON: \(error.localizedDescription)")
+                    os_log("解析JSON失败", log: appLog, type: .error)
                 }
             }
         } catch {
-            print("Error sending provider message: \(error.localizedDescription)")
+            print(": \(error.localizedDescription)")
+            os_log("发送提供商消息时出错:  %@", log: appLog, type: .error, error.localizedDescription)
         }
     }
 

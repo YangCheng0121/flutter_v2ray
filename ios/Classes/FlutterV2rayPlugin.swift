@@ -1,7 +1,9 @@
 import Flutter
-//import LibXray
+
+// import LibXray
 import NetworkExtension
 import UIKit
+import XRayCore
 
 public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
     // 静态共享的事件流实例
@@ -117,7 +119,7 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
 
     // 请求 VPN 权限
     private func handleRequestPermission(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        result(true);
+        result(true)
     }
 
     // 获取核心版本号
@@ -132,7 +134,9 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
 //        } else {
 //            result(nil)
 //        }
-        result("v1.0.0")
+        let data = XRayGetCoreVersion()
+        result("v\(data)")
+//        result("v1.0.0")
     }
 
     // 检查VPN
@@ -141,7 +145,7 @@ public class FlutterV2rayPlugin: NSObject, FlutterPlugin {
             if isValid == true {
 //                print("isValid \(isValid)")
                 // 获取 V2RAY_STATE 的字符串表示
-                
+
                 let connectStatus = AppConfigs.V2RAY_STATES.CONNECTED.description
                 let stats = V2RayStats.defaultStats()
 
